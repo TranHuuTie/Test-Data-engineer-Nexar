@@ -1,4 +1,5 @@
-Schema tạo bảng event_log
+Schema tạo bảng event_log trong cơ sở dữ liệu postgreSQL
+sau khi được xử lý bằng python, các file json sẽ được chuyển thành dạng bảng chứa đủ các trường dữ liệu như sau:
 
 CREATE TABLE event_logs_flat (
   event_date DATE,
@@ -29,7 +30,7 @@ CREATE TABLE event_logs_flat (
  4993322
 (1 row)
 
-# Tạo INDEX
+# Tạo INDEX cho bảng
 
 CREATE INDEX idx_event_logs_level ON event_logs_flat (level);
 
