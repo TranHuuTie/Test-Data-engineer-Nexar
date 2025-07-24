@@ -1,0 +1,39 @@
+Schema tạo bảng event_log
+
+CREATE TABLE event_logs_flat (
+  event_date DATE,
+  event_timestamp TIMESTAMP,
+  event_name TEXT,
+  user_id TEXT,
+  geo_city TEXT,
+  geo_continent TEXT,
+  geo_country TEXT,
+  geo_metro TEXT,
+  geo_region TEXT,
+  geo_sub_continent TEXT,
+  duration INT,
+  engaged_session_event INT,
+  firebase_event_origin TEXT,
+  firebase_screen_class TEXT,
+  firebase_screen_id TEXT,    
+  ga_session_id TEXT,          
+  ga_session_number INT,
+  level INT,
+  name TEXT,
+  result TEXT
+);
+
+# select count(*) from event_logs_flat ;
+  count  
+---------
+ 4993322
+(1 row)
+
+# Tạo INDEX
+
+CREATE INDEX idx_event_logs_level ON event_logs_flat (level);
+
+CREATE INDEX idx_event_logs_result ON event_logs_flat (result);
+
+CREATE INDEX idx_event_name_country
+ON event_logs_flat (event_name, geo_country);
